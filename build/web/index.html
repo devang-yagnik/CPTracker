@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="overflow:hidden">
+
+<head>
+
+   <!-- Meta tag are given here -->
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- STYLESHEET Link given here -->
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- Script Link -->
+   <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+   <title>Landing</title>
+
+  <style>
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 70px;
+      right: 30px;
+      z-index: 99;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background-color: #50C878;
+      color: white;
+      cursor: pointer;
+      padding: 9px;
+      border-radius: 16px;
+    }
+
+    #myBtn:hover {
+      background-color: #6960EC;
+    }
+
+    #profile {
+      background: linear-gradient(-45deg, #FF3D77, #338AFF);
+    }
+
+    #profile:focus,
+    #profile:hover {
+      background: -webkit-linear-gradient(-45deg, #FFA63D, #3CF0C5, #FF3D77, #338AFF);
+      background: -moz-linear-gradient(-45deg, #FFA63D, #3CF0C5, #FF3D77, #338AFF);
+      background: -o-linear-gradient(-45deg, #FFA63D, #3CF0C5, #FF3D77, #338AFF);
+      background: linear-gradient(-45deg, #FFA63D, #3CF0C5, #FF3D77, #338AFF);
+
+      -webkit-transition: background 1s ease-out;
+      -moz-transition: background 1s ease-out;
+      -o-transition: background 1s ease-out;
+      transition: background 1s ease-out;
+      background-size: 600%;
+      animation: anime 7s linear infinite;
+    }
+
+
+    @keyframes anime {
+      0% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+
+      100% {
+        background-position: 0% 50%
+      }
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+}
+    /*
+    width = height = 70px
+    border-width = 10px
+    time = 1s
+*/
+    .center {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    #loader {
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loader::before {
+      content: '';
+      position: absolute;
+      top: 39px;
+      left: 15%;
+      width: 60%;
+      height: 60%;
+      background: #ff3b8d;
+      box-shadow: -20px -15px 0 #07b2ff;
+      border-radius: 50%;
+      animation: animate 5s linear infinite;
+    }
+
+    #loader::after {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      left: 15%;
+      width: 60%;
+      height: 60%;
+      background: #8dff08;
+      box-shadow: 30px 25px 0 #ffeb3b;
+      border-radius: 50%;
+      animation: animate 3s linear infinite;
+    }
+
+    @keyframes animate {
+
+      0%,
+      90%,
+      100% {
+        filter: blur(20px) hue-rotate(0deg);
+      }
+
+      30%,
+      60% {
+        filter: blur(40px) hue-rotate(360deg);
+      }
+    }
+
+    #loader span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #000;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      font-size: 9px;
+      font-family: consolas;
+      color: #4F6FD7;
+    }
+
+    #loader span::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: inset 0 0 10px #C5C5C5;
+    }
+
+    #loader h3 {
+      position: absolute;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bolder;
+      font-size: 6px;
+      font-family: consolas;
+      color: #FFFFFF;
+      z-index: 20;
+      animation: typing 3s linear infinite;
+    }
+
+    @keyframes typing {
+
+      0%,
+      90%,
+      100% {
+        width: 0px;
+      }
+
+      30%,
+      60% {
+        width: 41.65px;
+      }
+    }
+  </style>
+
+  <!-- HERE THE CSS STYLESHEET IS GIVEN -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title> A.S. Power System</title>
+</head>
+
+<body class="bg-gray-900"">
+
+  <!-- PAGE LODING DIV IS GIVEN HERE -->
+  <div id="loader" class="center">
+    <span></span>
+    <h3 id="loading">Loading...</h3>
+  </div>
+
+
+  <!-- THE SCROLLTOTOP BUTTON HTML GIVEN HERE -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><b>Top</b></button>
+
+  <!--HERE THE JAVASCRIPT IS GIVEN -->
+
+  <script>
+    //Scroll to top whenever the page is refresh
+    window.onbeforeunload = function() {
+      window.scrollTo(0, 0);
+    };
+
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    };
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    //Here the page loading div script is GIVEN
+    document.onreadystatechange = function() {
+      if (document.readyState !== "complete") {
+        document.querySelector(
+          "body").style.visibility = "hidden";
+        document.querySelector(
+          "#loader").style.visibility = "visible";
+      } else {
+        document.querySelector(
+          "#loader").style.display = "none";
+        document.querySelector(
+          "body").style.visibility = "visible";
+      }
+    };
+  </script>
+
+  <!-- FROM HERE NAVBAR STARTED -->
+
+  <header class="text-purple-600 bg-gray-800 body-font">
+    <nav class="bg-gray-800 flex text-gray-200 justify-between w-full">
+
+        <div class="flex items-center p-1 ml-2 transition hover:translate-x-3 duration-500 ease-in-out">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="46" height="46" viewBox="0 0 172 172" style=" fill:#000000;" class="mr-2">
+            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+              text-anchor="none" style="mix-blend-mode: normal">
+              <path d="M0,172v-172h172v172z" fill="none"></path>
+              <path d="M86,172c-47.49649,0 -86,-38.50351 -86,-86v0c0,-47.49649 38.50351,-86 86,-86v0c47.49649,0 86,38.50351 86,86v0c0,47.49649 -38.50351,86 -86,86z" fill="#9b59b6"></path>
+              <g fill="#000000">
+                <path
+                  d="M76.37294,22.962l10.1428,7.9939l15.9878,-6.01691zM68.98073,24.07943l-22.00471,9.88493l31.88964,-2.1489zM108.00471,29.06487l-14.61251,5.15735l25.35699,11.00236zM115.13905,29.83847l12.11978,18.1367l7.9939,-4.12588zM79.38139,37.31664l-33.26494,2.1489l16.7614,16.50354zM90.12588,38.9498l8.7675,30.77222l22.00471,-17.62096zM84.62471,39.7234l-17.01927,19.25412l25.52891,10.74449zM36.74726,42.81782l-12.63552,23.38001l10.1428,14.52655zM42.24844,43.33355l-2.49272,37.64869l19.25412,-20.88729zM138.77693,48.31899l-9.28324,4.64162l7.13434,26.38847l11.77596,-4.64162zM124.76612,56.22694l-21.14515,16.84736l27.50589,6.27478zM66.23014,64.22084l2.75059,34.98406l23.63788,-23.72383zM60.72896,66.45569l-19.85582,21.40302l22.86427,12.37765zM22.99432,74.10577l2.23485,32.23347l7.9939,-17.36309zM101.38611,78.23165l8.85346,33.35089l20.02773,-26.73229zM96.1428,79.95077l-24.15361,23.89574l33.00707,9.62706zM149.00568,80.46651l-10.74449,4.38375l6.36074,23.38001zM133.61958,89.23401l-18.73839,25.09913l25.01317,-1.97699zM40.87315,94.21945l6.36074,21.74685l14.26868,-10.48662zM35.97366,96.45431l-6.61861,14.01081l12.11978,5.24331zM65.88632,109.34769l-14.52655,10.48662l28.02163,12.03383zM72.76279,109.86343l13.75295,23.72383l16.84736,-14.87037zM29.87079,116.7399l19.51199,21.48898l-5.75905,-15.64398zM141.26965,117.59946l-25.52891,2.23485l15.12824,12.89339zM109.12214,121.20961l-15.12824,13.15125l28.2795,-1.89103zM50.50021,125.59336l5.50118,14.87037l20.62942,-3.86802zM121.49979,138.22888l-30.25648,1.89103l6.01691,7.9939zM84.88257,140.7216l-22.26258,4.12588l28.36545,3.86802z">
+                </path>
+              </g>
+            </g>
+          </svg>
+
+            <a class="text-white cursor-default font-black text-lg">CSPT</a>
+
+        </div>
+
+        <div class=" flex items-center space-x-4 font-bold text-[15px] mr-8">
+            <a href="#landing.html" class="hover:text-white hover:scale-125 cursor-pointer duration-500 ease-in-out">Home</a>
+            <a href="#Feedback" class="hover:text-white hover:scale-125 cursor-pointer duration-500 ease-in-out">Contact</a> 
+            <a href="#Creater" class="hover:text-white hover:scale-125 cursor-pointer duration-500 ease-in-out">Creater</a>
+        </div>
+
+        <div class=" flex items-center space-x-2  font-bold text-[15px] mr-8">
+            <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-bold rounded-lg text-sm px-3 py-2" onclick="location.href = 'login.html';">Login</button>
+            <button type="button" class="text-gray-200 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 font-bold rounded-lg text-sm px-3 py-2" onclick="location.href = 'Registration.html';">Sign up</button>
+        </div>                   
+        </div>    
+        
+    </nav>
+  </header>
+
+  <!-- FROM HERE THE PROFILE IS STARTED -->
+
+  <section class="text-gray-600 bg-gray-900 body-font">
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-19 mx-auto flex flex-col">
+        <div class="lg:w-4/6 mx-auto">
+
+          <!-- HERE THE IMAGE BLOCK CODE IS OVER -->
+          <div class="flex flex-col sm:flex-row mt-10">
+            <div class="sm:w-1/3 sm:pr-8 sm:py-8 rounded-lg items-center">
+              <div class="rounded-lg h-[300px] overflow-hidden mt-5">
+                <img alt="content" class="object-cover object-center h-[300px] w-full shadow-md shadow-gray-200/50" src="php-code-under-control.png">
+              </div>
+            </div>
+            <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-1 border-gray-200 sm:border-t-0 border-t mt-10 pt-4 sm:mt-0 text-center sm:text-left">
+              <h1 class="title-font sm:text-4xl text-3xl mb-1 font-medium text-gray-100"><b>Welcome to Computer Science Portal Tracker</b></h1>
+              <h4 class="title-font mb-1 font-medium text-lg text-gray-200"> The Tool that's gona help new coders and geeks to track your Solved, Unsolved and Pending Problem statement
+              </h4>
+              <p class="leading-relaxed text-lg"><b>"CSPT is tracker that trackes your all competative questions from all site that you are using and give the best results by filtering your activity and help you to keep track your problem statement from all the competative coding sites like CodeForces, GeeksforGeeks, Leetcode, etc ....."</b></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="text-gray-600 bg-gray-900 body-font">
+      <div class="container px-5 py-9 mx-auto">
+        <div class="flex flex-col text-center w-full mt-2">
+          <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-200"><a name="Creater"><b>Creater</b></a></h1>
+        </div>
+        <div class="flex mt-1 justify-center mb-14">
+          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+        </div>
+        <div class="flex flex-wrap -m-4 justify-center">
+
+          <!-- FROM HERE FIRST ABOUT US SECTION STARTED -->
+          <div class="p-2 md:w-1/4">
+            <div class="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 border-2 border-gray-200 text-gray-100">
+              <img src="profile.gif" alt="" class="w-32 h-32 mx-auto rounded-full bg-violet-500 aspect-square">
+              <div class="space-y-4 text-center divide-y divide-gray-700">
+                <div class="my-2 space-y-1">
+                  <h2 class="text-xl font-semibold sm:text-2xl">Shrut Sureja (Team Lead)</h2>
+                  <p class="px-5 text-xs sm:text-base text-gray-400">Backend Dev</p>
+                </div>
+                <div class="flex justify-center pt-2 space-x-4 align-center">
+                  <a rel="noopener noreferrer" href="#" aria-label="GitHub" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Dribble" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Twitter" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Email" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FROM HERE SECOND ABOUT US SECTION STARTED -->
+          <div class="p-2 md:w-1/4">
+            <div class="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 border-2 border-gray-200 text-gray-100">
+              <img src="profile.gif" alt="" class="w-32 h-32 mx-auto rounded-full bg-green-400 aspect-square">
+              <div class="space-y-4 text-center divide-y divide-gray-700">
+                <div class="my-2 space-y-1">
+                  <h2 class="text-xl font-semibold sm:text-2xl">Devang Yagnik</h2>
+                  <p class="px-5 text-xs sm:text-base text-gray-400">Backend Dev</p>
+                </div>
+                <div class="flex justify-center pt-2 space-x-4 align-center">
+                  <a rel="noopener noreferrer" href="#" aria-label="GitHub" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Dribble" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Twitter" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Email" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2 md:w-1/4">
+            <div class="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 border-2 border-gray-200 text-gray-100">
+              <img src="profile.gif" alt="" class="w-32 h-32 mx-auto rounded-full bg-indigo-500 aspect-square">
+              <div class="space-y-4 text-center divide-y divide-gray-700">
+                <div class="my-2 space-y-1">
+                  <h2 class="text-xl font-semibold sm:text-2xl">Saubhagya Vishwakarma</h2>
+                  <p class="px-5 text-xs sm:text-base text-gray-400">Frontend Dev</p>
+                </div>
+                <div class="flex justify-center pt-2 space-x-4 align-center">
+                  <a rel="noopener noreferrer" href="#" aria-label="GitHub" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Dribble" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Twitter" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Email" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FROM HERE THIRD ABOUT US SECTION STARTED -->
+
+          <div class="p-2 md:w-1/4">
+            <div class="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 border-2 border-gray-200 text-gray-100">
+              <img src="profile.gif" alt="" class="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square">
+              <div class="space-y-4 text-center divide-y divide-gray-700">
+                <div class="my-2 space-y-1">
+                  <h2 class="text-xl font-semibold sm:text-2xl">Kirtan Langaliya</h2>
+                  <p class="px-5 text-xs sm:text-base text-gray-400">Backend Dev (Junior)</p>
+                </div>
+                <div class="flex justify-center pt-2 space-x-4 align-center">
+                  <a rel="noopener noreferrer" href="#" aria-label="GitHub" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Dribble" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Twitter" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                    </svg>
+                  </a>
+                  <a rel="noopener noreferrer" href="#" aria-label="Email" class="p-2 rounded-md text-gray-100 hover:text-violet-400">
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
+                      <path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <!-- FROM HERE THE FEEDBACK STARTED -->
+
+    <section class="text-gray-400 bg-gray-900 body-font relative mb-9">
+      <div class="container px-5 py-19 mx-auto">
+        <div class="flex flex-col text-center w-full mb-10">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-0 text-white mt-16"><a name="Feedback"><b>Feedback</b></a></h1>
+          <div class="flex mt-1 justify-center mb-3">
+            <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+          </div>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base"><b>Please complete the following form and help us to improve our customer experience.</b></p>
+        </div>
+        <div>
+          <!-- UPDATE THE URL FOR THANK YOU PAGE ON FORM SUBMIT -->
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
+          <!-- FORM CODE IS WRITTEN HERE -->
+          <form class="Feedbackform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSegt_u2VTvxmsc3Ai_0XX6rxEp3XmpuPBg6MkS4yIsfLhpS9w/formResponse" target="hidden_iframe" name="feedbackform" method="post" onsubmit="onSubmit()">
+
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+              <div class="flex flex-wrap -m-2 justify-center">
+                <div class="p-2 w-1/2">
+                  <div class="relative">
+                    <label for="name" class="leading-7 text-sm text-gray-400"><b>Name</b></label>
+                    <input type="text" id="name" name="entry.1446745697" placeholder="Enter your Full Name" pattern="[A-Za-z]{1,32}" title="First letter must be Capital Letter"
+                      class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      required>
+                  </div>
+                </div>
+                <div class="p-2 w-1/2">
+                  <div class="relative">
+                    <label for="email" class="leading-7 text-sm text-gray-400"><b>Email</b></label>
+                    <input type="email" id="email" name="entry.1494536791" placeholder="Ex: abcd1234@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Format: abcd1234@gmail.com"
+                      class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      required>
+                  </div>
+                </div>
+                <div class="p-2 w-full">
+                  <div class="relative">
+                    <label for="message" class="leading-7 text-sm text-gray-400"><b>Message</b></label>
+                    <textarea id="message" name="entry.222502787" placeholder="Give your experience here "
+                      class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                      required></textarea>
+                  </div>
+                </div>
+                <div class="button-area flex justify-center">
+                  <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="margin:5px" type="submit" onclick="submitForm()"><b>SEND</b></button>
+                  <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg" style="margin:5px" type="submit" onclick="resetForm()"><b>RESET</b></button>
+                </div>
+              </div>
+            </div>
+        </div>
+        </form>
+      </div>
+      </div>
+    </section>
+
+    <!-- FROM HERE THE FOOTER IS STARTED -->
+
+    <footer class="text-gray-900 bg-gray-900 body-font">
+      <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col justify-center">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="46" height="46" viewBox="0 0 172 172" style=" fill:#000000;">
+            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none"
+              text-anchor="none" style="mix-blend-mode: normal">
+              <path d="M0,172v-172h172v172z" fill="none"></path>
+              <path d="M86,172c-47.49649,0 -86,-38.50351 -86,-86v0c0,-47.49649 38.50351,-86 86,-86v0c47.49649,0 86,38.50351 86,86v0c0,47.49649 -38.50351,86 -86,86z" fill="#9b59b6"></path>
+              <g fill="#000000">
+                <path
+                  d="M76.37294,22.962l10.1428,7.9939l15.9878,-6.01691zM68.98073,24.07943l-22.00471,9.88493l31.88964,-2.1489zM108.00471,29.06487l-14.61251,5.15735l25.35699,11.00236zM115.13905,29.83847l12.11978,18.1367l7.9939,-4.12588zM79.38139,37.31664l-33.26494,2.1489l16.7614,16.50354zM90.12588,38.9498l8.7675,30.77222l22.00471,-17.62096zM84.62471,39.7234l-17.01927,19.25412l25.52891,10.74449zM36.74726,42.81782l-12.63552,23.38001l10.1428,14.52655zM42.24844,43.33355l-2.49272,37.64869l19.25412,-20.88729zM138.77693,48.31899l-9.28324,4.64162l7.13434,26.38847l11.77596,-4.64162zM124.76612,56.22694l-21.14515,16.84736l27.50589,6.27478zM66.23014,64.22084l2.75059,34.98406l23.63788,-23.72383zM60.72896,66.45569l-19.85582,21.40302l22.86427,12.37765zM22.99432,74.10577l2.23485,32.23347l7.9939,-17.36309zM101.38611,78.23165l8.85346,33.35089l20.02773,-26.73229zM96.1428,79.95077l-24.15361,23.89574l33.00707,9.62706zM149.00568,80.46651l-10.74449,4.38375l6.36074,23.38001zM133.61958,89.23401l-18.73839,25.09913l25.01317,-1.97699zM40.87315,94.21945l6.36074,21.74685l14.26868,-10.48662zM35.97366,96.45431l-6.61861,14.01081l12.11978,5.24331zM65.88632,109.34769l-14.52655,10.48662l28.02163,12.03383zM72.76279,109.86343l13.75295,23.72383l16.84736,-14.87037zM29.87079,116.7399l19.51199,21.48898l-5.75905,-15.64398zM141.26965,117.59946l-25.52891,2.23485l15.12824,12.89339zM109.12214,121.20961l-15.12824,13.15125l28.2795,-1.89103zM50.50021,125.59336l5.50118,14.87037l20.62942,-3.86802zM121.49979,138.22888l-30.25648,1.89103l6.01691,7.9939zM84.88257,140.7216l-22.26258,4.12588l28.36545,3.86802z">
+                </path>
+              </g>
+            </g>
+          </svg>
+          <span class="ml-3 text-xl text-gray-200">CSP Tracker</span>
+        </a>
+        <p class="text-sm text-gray-200 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"><b>Powered By: </b>
+          <a href="https://twitter.com/knyttneve" class="text-gray-300 ml-1" rel="noopener noreferrer" target="_blank">@CSPtracker122k4</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          <a class="text-gray-300">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-300">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-300">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-300">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+
+</body>
+
+</html>

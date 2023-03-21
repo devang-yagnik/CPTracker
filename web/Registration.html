@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- STYLESHEET Link given here -->
+     <script src="https://cdn.tailwindcss.com"></script>
+
+     <!-- Script Link -->
+     <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <title>Registration</title>
+</head>
+<body>
+    
+  <!-- component -->
+<div class="h-screen bg-gray-900 flex justify-center items-center w-full">
+  <form class="">
+    <div class="bg-gray-800 px-10 py-8 rounded-xl w-screen shadow-md shadow-gray-700/50 border-gray-700 max-w-3xl">
+      <div class="mb-6">
+        <h1 class="text-center text-2xl font-semibold text-gray-100">Register</h1>
+        <div class=""></div>
+      </div>
+      
+      <div class="grid gap-2 grid-cols-3">
+        <div>
+          <label for="Fname" class="block mb-1 text-gray-100 font-semibold">Firstname</label> <!-- for="Fname" -->
+          <input title="Firstname" type="text" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="Lname" class="block mb-1 text-gray-100 font-semibold">Lastname</label> <!-- for="Lname" -->
+          <input title="Lastname" type="text" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="email" class="block mb-1 text-gray-100 font-semibold">Email</label> <!-- for="email"  -->
+          <input title="Email" type="email" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="pass" class="block mb-1 text-gray-100 font-semibold">Password</label> <!-- for="pass" -->
+          <input title="Password" type="password" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="Cpass" class="block mb-1 text-gray-100 font-semibold">Confirm Password</label> <!-- for="Cpass" -->
+          <input title="Confirm Password" type="password" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="CSPT" class="block mb-1 text-gray-100 font-semibold">CSPT ID</label> <!-- for="CSPT" -->
+          <input title="CSPT ID" type="text" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <div>
+          <label for="CFID" class="block mb-1 text-gray-100 font-semibold">CodeForces ID</label> <!-- for="CFID" -->
+          <input title="Codechef" type="text" class="bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+        </div>
+        <!-- <div>
+          <label for="LCID" class="block mb-1 text-gray-600 font-semibold">Leetcode ID</label> for="LCID"
+          <input title="Password" type="text" class="bg-indigo-50 px-4 py-2 outline-none rounded-md w-full" />
+        </div> -->
+      </div>
+      <div class="text-center">
+        <button onclick="location.href = 'Login_Page.html';" type="submit" class="mt-6 w-auto px-3 py-2 bg-violet-500  hover:bg-violet-600 text-gray-100 hover:text-gray-200 rounded-md text-lg font-semibold tracking-tight cursor-pointer transition ease-in duration-100">Sign up</button>
+      </div>
+      
+    </div>
+  </form>
+</div>
+        
+</body>
+</html>
