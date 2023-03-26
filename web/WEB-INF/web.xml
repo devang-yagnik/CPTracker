@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>store_todo</servlet-name>
-        <servlet-class>store_todo</servlet-class>
+        <servlet-class>javaFiles.store_todo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>

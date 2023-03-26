@@ -27,6 +27,7 @@ public class login extends HttpServlet {
         PrintWriter out;
         out = response.getWriter();
         try{
+                System.out.println("Connected");
               String username = request.getParameter("user");
               String password = request.getParameter("password");
               Cookie ck=new Cookie("username",username);//creating cookie object  

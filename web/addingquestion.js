@@ -1,36 +1,33 @@
-
-const addquestion = () =>
-{
-    let id = 1746;// get id from database
-    let handles = shrutsureja;// get handle from database
-    let query = "https://codeforces.com/api/contest.standings?contestId=" + id + "&handles=" + handles;
-    fetch().then(response =>
-    {
-        return response.json();
-    })
-        .then((data) =>
-        {
-            if (data.status === "OK")
-            {
+const addquestion = () => {
+    let id = 1746; // get id from database
+    let handles = shrutsureja; // get handle from database
+    let query =
+        "https://codeforces.com/api/contest.standings?contestId=" +
+        id +
+        "&handles=" +
+        handles;
+    fetch()
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            if (data.status === "OK") {
                 let problems = data.result.problems;
                 const table = document.querySelector("#mainQuestion");
                 table.innerHTML = "";
-                problems.forEach(problem =>
-                {
-                    if (problem.index === indexfromdatabase)
-                    {
+                problems.forEach((problem) => {
+                    if (problem.index === indexfromdatabase) {
                         let tags = problem.tags;
-                    let tag = "";
-                    tags.forEach(tagName =>
-                    {
-                        tag += `<span
+                        let tag = "";
+                        tags.forEach((tagName) => {
+                            tag += `<span
                         class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
                         ${tagName}
                         </span>`;
-                    });
-                    const row = document.createElement("tr");
-                    row.classList.add("hover:bg-gray-50");
-                    row.innerHTML = `
+                        });
+                        const row = document.createElement("tr");
+                        row.classList.add("hover:bg-gray-50");
+                        row.innerHTML = `
               <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                   <div class="text-sm">
                     <div class="font-medium text-gray-700">${problem.index}</div>
@@ -89,17 +86,14 @@ const addquestion = () =>
               </div>
             </td>
                     `;
-                    table.append(row);
-                    // problem.index ${problem.name} , problem.rating 
-                    
+                        table.append(row);
+                        // problem.index ${problem.name} , problem.rating
                     }
                 });
                 document.querySelector("#mainQuestion");
-            }
-            else
-            {
+            } else {
                 let error = data.comment;
                 alert(error);
             }
         });
-}
+};
